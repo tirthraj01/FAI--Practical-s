@@ -1,72 +1,38 @@
+# Expert System for Medical Diagnosis
 
-% EXPERIMENT 10: Medical Expert System
+# Enter patient symptoms
+symptoms = input("Enter symptoms separated by commas: ")
+symptoms = symptoms.lower().replace(" ", "").split(",")
 
-% Step 1: Define sample symptoms
-% Change these facts to test different conditions
+# Check diseases
+if "sneezing" in symptoms and "runny_nose" in symptoms:
+    print("Possible Disease: Common Cold")
 
-symptom(fever).
-symptom(cough).
-symptom(body_ache).
-symptom(fatigue).
+if "fever" in symptoms and "cough" in symptoms and "body_ache" in symptoms:
+    print("Possible Disease: Flu")
 
-% Step 2: Define rules for 10 diseases
+if "fever" in symptoms and "chills" in symptoms:
+    print("Possible Disease: Malaria")
 
-% 1. Common Cold
-diagnosis(common_cold) :-
-    symptom(sneezing),
-    symptom(runny_nose),
-    symptom(sore_throat).
+if "fever" in symptoms and "headache" in symptoms and "joint_pain" in symptoms:
+    print("Possible Disease: Dengue")
 
-% 2. Flu
-diagnosis(flu) :-
-    symptom(fever),
-    symptom(cough),
-    symptom(body_ache).
+if "fever" in symptoms and "stomach_pain" in symptoms:
+    print("Possible Disease: Typhoid")
 
-% 3. Malaria
-diagnosis(malaria) :-
-    symptom(fever),
-    symptom(chills),
-    symptom(sweating).
+if "wheezing" in symptoms and "breathlessness" in symptoms:
+    print("Possible Disease: Asthma")
 
-% 4. Dengue
-diagnosis(dengue) :-
-    symptom(fever),
-    symptom(headache),
-    symptom(joint_pain).
+if "sneezing" in symptoms and "itching" in symptoms:
+    print("Possible Disease: Allergy")
 
-% 5. Typhoid
-diagnosis(typhoid) :-
-    symptom(fever),
-    symptom(stomach_pain),
-    symptom(weakness).
+if "severe_headache" in symptoms and "nausea" in symptoms:
+    print("Possible Disease: Migraine")
 
-% 6. Asthma
-diagnosis(asthma) :-
-    symptom(wheezing),
-    symptom(breathlessness),
-    symptom(chest_tightness).
+if "vomiting" in symptoms and "diarrhea" in symptoms:
+    print("Possible Disease: Gastroenteritis")
 
-% 7. Allergy
-diagnosis(allergy) :-
-    symptom(sneezing),
-    symptom(itching),
-    symptom(watery_eyes).
+if "red_eyes" in symptoms and "itching" in symptoms:
+    print("Possible Disease: Conjunctivitis")
 
-% 8. Migraine
-diagnosis(migraine) :-
-    symptom(severe_headache),
-    symptom(nausea),
-    symptom(light_sensitivity).
-
-% 9. Gastroenteritis
-diagnosis(gastroenteritis) :-
-    symptom(vomiting),
-    symptom(diarrhea),
-    symptom(stomach_pain).
-
-% 10. Conjunctivitis
-diagnosis(conjunctivitis) :-
-    symptom(red_eyes),
-    symptom(itching),
-    symptom(eye_discharge).
+print("Expert System Completed.")
