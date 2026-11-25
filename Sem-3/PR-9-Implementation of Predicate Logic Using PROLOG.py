@@ -1,35 +1,43 @@
+# Predicate Logic
 
-% Step 1: Define parent relationships
-parent(john, mary).
-parent(john, bob).
-parent(mary, alice).
-parent(bob, sam).
+# Parent relationships
+parent = [
+    ("john", "mary"),
+    ("john", "bob"),
+    ("mary", "alice"),
+    ("bob", "sam")
+]
 
-% Step 2: Define gender
-male(john).
-male(bob).
-male(sam).
+# Gender
+male = ["john", "bob", "sam"]
+female = ["mary", "alice"]
 
-female(mary).
-female(alice).
+# Check father
+def father(x, y):
+    return (x, y) in parent and x in male
 
-% Step 3: Define father relationship
-father(X, Y) :-
-    parent(X, Y),
-    male(X).
+# Check mother
+def mother(x, y):
+    return (x, y) in parent and x in female
 
-% Step 4: Define mother relationship
-mother(X, Y) :-
-    parent(X, Y),
-    female(X).
+# Check sibling
+def sibling(x, y):
+    for a, b in parent:
+        for c, d in parent:
+            if b == x and d == y and a == c and x != y:
+                return True
+    return False
 
-% Step 5: Define sibling relationship
-sibling(X, Y) :-
-    parent(P, X),
-    parent(P, Y),
-    X \= Y.
+# Check grandparent
+def grandparent(x, y):
+    for a, b in parent:
+        for c, d in parent:
+            if a == x and b == c and d == y:
+                return True
+    return False
 
-% Step 6: Define grandparent relationship
-grandparent(X, Y) :-
-    parent(X, Z),
-    parent(Z, Y).
+# Display results
+print("Father:", father("john", "mary"))
+print("Mother:", mother("mary", "alice"))
+print("Sibling:", sibling("mary", "bob"))
+print("Grandparent:", grandparent("john", "alice"))
