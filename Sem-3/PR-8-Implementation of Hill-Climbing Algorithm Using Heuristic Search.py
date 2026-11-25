@@ -1,27 +1,25 @@
-# Step 1: Define the heuristic function
+# Define heuristic function
 def heuristic(x):
-    return -(x - 3)**2 + 9
+    return -(x - 3) ** 2 + 9
 
-
-# Step 2: Define Hill-Climbing algorithm
+# Hill Climbing algorithm
 def hill_climbing(start):
-
     current = start
 
-    # Step 3: Repeat until no better neighbor is found
-    while True:
+    print("Initial State:", current)
 
-        # Check left and right neighbors
+    while True:
+        # Find neighboring states
         left = current - 1
         right = current + 1
 
-        # Step 4: Select the better neighbor
+        # Select the better neighbor
         if heuristic(left) > heuristic(right):
             next_state = left
         else:
             next_state = right
 
-        # Step 5: Stop if no improvement is possible
+        # Stop if no better neighbor exists
         if heuristic(next_state) <= heuristic(current):
             print("No better neighbor found.")
             break
@@ -32,10 +30,8 @@ def hill_climbing(start):
 
     return current
 
-
-# Step 6: Start the algorithm
+# Run the algorithm
 result = hill_climbing(0)
 
-# Step 7: Display the final result
-print("Best state:", result)
-print("Maximum value:", heuristic(result))
+print("\nBest State:", result)
+print("Maximum Value:", heuristic(result))
